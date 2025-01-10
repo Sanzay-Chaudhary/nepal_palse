@@ -5,6 +5,15 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      body: PageView.builder(
+        itemCount: 10,
+        itemBuilder: (context, index) {
+          return Center(
+            child: Text("Page No. $index"),
+          );
+        },
+      ),
+    );
   }
 }
