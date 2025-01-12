@@ -7,10 +7,24 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView.builder(
+        controller: PageController(initialPage: 0),
+        scrollDirection: Axis.vertical,
         itemCount: 10,
         itemBuilder: (context, index) {
-          return Center(
-            child: Text("Page No. $index"),
+          return Container(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            child: Column(
+              children: [
+                Image.network("src"),
+                Text("NewsHeading"),
+                Text("Description"),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text("Read More"),
+                )
+              ],
+            ),
           );
         },
       ),
