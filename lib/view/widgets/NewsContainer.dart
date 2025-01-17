@@ -17,48 +17,53 @@ class Newscontainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
+      margin: const EdgeInsets.symmetric(vertical: 8.0),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           // News Image
-          Expanded(
-            flex: 3,
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8.0),
             child: Image.network(
               imgUrl,
-              fit: BoxFit.cover,
+              height: 300, // Adjust the height as needed
               width: double.infinity,
+              fit: BoxFit.contain, // Ensures the full image is shown
+              errorBuilder: (context, error, stackTrace) => const Icon(
+                Icons.broken_image,
+                size: 50,
+                color: Colors.grey,
+              ),
             ),
           ),
+          const SizedBox(height: 20),
           // News Headline
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              newsHead,
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+          Text(
+            newsHead,
+            style: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
             ),
           ),
+          const SizedBox(height: 4),
           // News Description
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: Text(
-              newsDes,
-              style: TextStyle(fontSize: 16, color: Colors.grey[700]),
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
+          Text(
+            newsDes,
+            style: const TextStyle(
+              fontSize: 16,
+              color: Colors.grey,
             ),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 12),
           // Read More Button
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: ElevatedButton(
-              onPressed: () {
-                print("Opening: $newsUrl");
-              },
-              child: const Text("Read More"),
-            ),
+          ElevatedButton(
+            onPressed: () {
+              print("Opening: $newsUrl");
+            },
+            child: const Text("Read More"),
           ),
         ],
       ),

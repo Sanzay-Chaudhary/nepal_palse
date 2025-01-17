@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:nepal_palse/view/widgets/NewsContainer.dart';
 
@@ -10,7 +12,7 @@ class MyHomePage extends StatelessWidget {
       body: PageView.builder(
         controller: PageController(initialPage: 0),
         scrollDirection: Axis.vertical,
-        itemCount: 10,
+        itemCount: 1,
         itemBuilder: (context, index) {
           return Newscontainer(
               imgUrl:
