@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:nepal_palse/view/home_screen.dart';
-import 'package:nepal_palse/view_model/news_provider.dart';
-import 'package:provider/provider.dart';
+import 'views/home_screen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -12,14 +10,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => NewsProvider(),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Nepal Pulse',
-        theme: ThemeData(primarySwatch: Colors.red),
-        home: HomeScreen(),
-      ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'News App',
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: const HomeScreen(),
     );
   }
 }
