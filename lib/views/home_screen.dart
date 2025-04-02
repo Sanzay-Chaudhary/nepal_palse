@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nepal_palse/core/view_models/news_view_model.dart';
+import 'package:nepal_palse/widgets/news_list.dart';
 // import 'package:nepal_palse/core/view_models/news_viewmodel.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -16,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final newsList = newsViewModel.getNews();
     return Scaffold(
       appBar: AppBar(title: const Text('Nepal Pulse')),
-      // body: NewsList(newsList: newsList),
+      body: NewsList(newsList: newsList),
     );
   }
 }
