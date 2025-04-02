@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nepal_palse/core/models/news_model.dart';
 
 class NewsDetailScreen extends StatefulWidget {
-  final NewsModel news;
+  final NewsModel news;// declare a variable named news of type NewsModel
   const NewsDetailScreen({super.key, required this.news});
 
   @override
