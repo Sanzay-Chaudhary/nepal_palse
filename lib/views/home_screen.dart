@@ -11,13 +11,27 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final NewsViewModel newsViewModel = NewsViewModel();
+
+  @override
+  void initState() {
+    super.initState();
+    fetchNewsData();
+  }
+
+  void fetchNewsData() async {
+    await newsViewModel.getNews();
+    setState(() {}); // Update UI after fetching news
+  }
+
   @override
   Widget build(BuildContext context) {
-    final newsViewModel = NewsViewModel();
-    final newsList = newsViewModel.getNews();
     return Scaffold(
-      appBar: AppBar(title: const Text('Nepal Pulse')),
-      body: NewsList(newsList: newsList),
+      appBar: AppBar(title: const Text("Nepal Pulse")),
+      body:
+          newsViewModel.isLoading
+              ? const Center(child: CircularProgressIndicator())
+              : NewsList(newsList: newsViewModel.newsList),
     );
   }
 }
