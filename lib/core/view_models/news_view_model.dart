@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nepal_palse/services/api_service.dart';
+import 'package:nepal_palse/services/news_service.dart';
 import '../models/news_model.dart';
 
 class NewsViewModel extends ChangeNotifier {

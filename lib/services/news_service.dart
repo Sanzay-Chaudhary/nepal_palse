@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:nepal_palse/core/models/news_model.dart';
 
-class ApiService {
+class NewsService {
   static const String _apiKey = "45eb4e3459184faaa46ac9e1d74dd508";
   static const String _baseUrl =
       "https://newsapi.org/v2/everything?q=tesla&from=2025-03-03&sortBy=publishedAt";
