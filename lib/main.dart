@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:nepal_palse/core/view_models/news_provider.dart';
+import 'package:provider/provider.dart';
 import 'views/home_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(create: (_) => NewsProvider(), child: const MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {
