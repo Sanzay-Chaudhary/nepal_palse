@@ -5,7 +5,10 @@ import 'views/home_screen.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider(create: (_) => NewsProvider(), child: const MyApp()),
+    ChangeNotifierProvider(
+      create: (context) => NewsProvider(),
+      child: const MyApp(),
+    ),
   );
 }
 
