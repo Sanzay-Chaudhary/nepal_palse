@@ -17,12 +17,13 @@ class NewsProvider extends ChangeNotifier {
     try {
       final response = await http.get(
         Uri.parse(
-          'https://newsapi.org/v2/everything?q=tesla&from=2025-03-03&sortBy=publishedAt&apiKey=45eb4e3459184faaa46ac9e1d74dd508',
+          'https://newsapi.org/v2/everything?q=Apple&sortBy=popularity&apiKey=acdd888fb9a04411a7d398280eed1054',
         ),
       );
 
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
+        print(data);
         final List articles = data['articles'];
         _newsList = articles.map((e) => NewsModel.fromJson(e)).toList();
       } else {
