@@ -12,15 +12,27 @@ class NewsTile extends StatelessWidget {
       margin: const EdgeInsets.all(8.0),
       child: ListTile(
         contentPadding: const EdgeInsets.all(8.0),
-        leading:
-            news.imgUrl.isNotEmpty
-                ? Image.network(
-                  news.imgUrl,
-                  fit: BoxFit.cover,
-                  width: 100,
-                  height: 100,
-                )
-                : null,
+        leading: ClipRRect(
+          borderRadius: BorderRadius.circular(8),
+          child: SizedBox(
+            width: 100,
+            height: 100,
+            child: Image.network(
+              news.imgUrl,
+              fit: BoxFit.cover,
+              loadingBuilder: (context, child, loadingProgress) {
+                if (loadingProgress == null) return child;
+                return const Center(child: CircularProgressIndicator());
+              },
+              errorBuilder: (context, error, stackTrace) {
+                return Container(
+                  color: Colors.grey[300],
+                  child: const Icon(Icons.broken_image, size: 50),
+                );
+              },
+            ),
+          ),
+        ),
         title: Text(
           news.title,
           style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
@@ -31,7 +43,7 @@ class NewsTile extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
         ),
         onTap: () {
-          print('Navigating to: ${news.url}');
+          print('Tapped on article:\n${news.url}');
         },
       ),
     );
